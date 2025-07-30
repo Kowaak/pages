@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kowaak</title>
+    <link rel="stylesheet" href="../assets/style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body style="background-color: black;" class="text-white"> 
+<script>
+    function fromLower(){
+        let royal_city = 1.58;
+
+        let fromLower_tier_2 = document.getElementById("fromLower_tier_2").value;
+        let fromLower_tier_3 = document.getElementById("fromLower_tier_3");
+        let fromLower_tier_4 = document.getElementById("fromLower_tier_4");
+        let fromLower_tier_5 = document.getElementById("fromLower_tier_5");
+        let fromLower_tier_6 = document.getElementById("fromLower_tier_6");
+        let fromLower_tier_7 = document.getElementById("fromLower_tier_7");
+        let fromLower_tier_8 = document.getElementById("fromLower_tier_8");
+
+        let fromLower_refined_3 = document.getElementById("fromLower_refined_3");
+        let fromLower_refined_4 = document.getElementById("fromLower_refined_4");
+        let fromLower_refined_5 = document.getElementById("fromLower_refined_5");
+        let fromLower_refined_6 = document.getElementById("fromLower_refined_6");
+        let fromLower_refined_7 = document.getElementById("fromLower_refined_7");
+        let fromLower_refined_8 = document.getElementById("fromLower_refined_8");
+
+        let temp;
+
+        temp = fromLower_tier_2 * royal_city * 2;
+        fromLower_tier_3.innerHTML = temp.toFixed(2);
+        temp /= 2;
+        fromLower_refined_3.innerHTML = (temp * royal_city).toFixed(2);
+
+        temp = temp * royal_city * 2;
+        fromLower_tier_4.innerHTML = temp.toFixed(2);
+        temp /= 2;
+        fromLower_refined_4.innerHTML = (temp * royal_city).toFixed(2);
+
+        temp = temp * royal_city * 3;
+        fromLower_tier_5.innerHTML = temp.toFixed(2);
+        temp /= 3;
+        fromLower_refined_5.innerHTML = (temp * royal_city).toFixed(2);
+
+        temp = temp * royal_city * 4;
+        fromLower_tier_6.innerHTML = temp.toFixed(2);
+        temp /= 4;
+        fromLower_refined_6.innerHTML = (temp * royal_city).toFixed(2);
+
+        temp = temp * royal_city * 5;
+        fromLower_tier_7.innerHTML = temp.toFixed(2);
+        temp /= 5;
+        fromLower_refined_7.innerHTML = (temp * royal_city).toFixed(2);
+
+        temp = temp * royal_city * 5;
+        fromLower_tier_8.innerHTML = temp.toFixed(2);
+        temp /= 5;
+        fromLower_refined_8.innerHTML = (temp * royal_city).toFixed(2);
+    }
+    function toLower(){
+        let royal_city = 1.58;
+
+        let toLower_tier_2 = document.getElementById("toLower_tier_2");
+        let toLower_tier_3 = document.getElementById("toLower_tier_3");
+        let toLower_tier_4 = document.getElementById("toLower_tier_4");
+        let toLower_tier_5 = document.getElementById("toLower_tier_5").value;
+
+        let toLower_refined_5 = document.getElementById("toLower_refined_5");
+       
+        let temp;
+
+        temp = toLower_tier_5;
+  
+        temp /= royal_city * 3;
+        temp *= 2;
+        toLower_tier_4.innerHTML = (temp).toFixed(2);
+
+        temp /= royal_city * 2;
+        temp *= 2;
+        toLower_tier_3.innerHTML = (temp).toFixed(2);
+
+        temp /= royal_city * 2;
+        toLower_tier_2.innerHTML = (temp).toFixed(2);
+        //         1337.12           wtf
+    }
+</script>
+
+<div class="container-fluid mt-4">
+    <div class="row">
+        <div class="mb-3">
+                    <label for="fromLower_tier_2" class="form-label">T2:</label>
+                    <input id="fromLower_tier_2" type="text" class="form-control" oninput="fromLower()">
+        </div>
+        <!-- Lewa sekcja -->
+        <div class="col-md-6 mb-4">
+            <section class="p-3 border rounded shadow-sm bg-dark text-white">
+                <h5>W mieście królewskim</h5>
+                
+                <div class="mb-2">T3: <span id="fromLower_tier_3">0</span></div>
+                <div class="mb-2">Przerobione T3: <span id="fromLower_refined_3">0</span></div><br>
+
+                <div class="mb-2">T4: <span id="fromLower_tier_4">0</span></div>
+                <div class="mb-2">Przerobione T4: <span id="fromLower_refined_4">0</span></div><br>
+
+                <div class="mb-2">T5: <span id="fromLower_tier_5">0</span></div>
+                <div class="mb-2">Przerobione T5: <span id="fromLower_refined_5">0</span></div><br>
+
+                <div class="mb-2">T6: <span id="fromLower_tier_6">0</span></div>
+                <div class="mb-2">Przerobione T6: <span id="fromLower_refined_6">0</span></div><br>
+
+                <div class="mb-2">T7: <span id="fromLower_tier_7">0</span></div>
+                <div class="mb-2">Przerobione T7: <span id="fromLower_refined_7">0</span></div><br>
+
+                <div class="mb-2">T8: <span id="fromLower_tier_8">0</span></div>
+                <div class="mb-2">Przerobione T8: <span id="fromLower_refined_8">0</span></div><br>
+            </section>
+        </div>
+
+        <!-- Prawa sekcja -->
+        <div class="col-md-6 mb-4">
+            <section class="p-3 border rounded shadow-sm bg-dark text-white">
+                <h5>Bez bonusu miasta królewskiego</h5>
+                
+            </section>
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid mt-4">
+    <div class="row">
+        <div class="mb-3">
+            <label for="toLower_tier_5" class="form-label">T5:</label>
+            <input id="toLower_tier_5" type="text" class="form-control" oninput="toLower()">
+        </div>
+        <!-- Lewa sekcja -->
+        <div class="col-md-6 mb-4">
+            <section class="p-3 border rounded shadow-sm bg-dark text-white">
+                <h5>W mieście królewskim</h5>
+                
+                <div class="mb-2">T2: <span id="toLower_tier_2">0</span></div>
+
+                <div class="mb-2">T3: <span id="toLower_tier_3">0</span></div>
+
+                <div class="mb-2">T4: <span id="toLower_tier_4">0</span></div>
+
+                <div class="mb-2">Przerobione T5: <span id="toLower_refined_5">0</span></div><br>
+
+            </section>
+        </div>
+
+        <!-- Prawa sekcja -->
+        <div class="col-md-6 mb-4">
+            <section class="p-3 border rounded shadow-sm bg-dark text-white">
+                <h5>Bez bonusu miasta królewskiego</h5>
+                
+            </section>
+        </div>
+    </div>
+</div>
+
+<footer class="text-center mt-4">
+    Source: 
+    <a class="source" href="https://github.com/Kowaak/pages">
+        <img src="../assets/img/github-mark-white.svg" alt="GitHub" style="width: 24px;">
+    </a>
+</footer>
+</body>
+</html>
