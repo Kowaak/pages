@@ -9,56 +9,80 @@
 </head>
 <body style="background-color: black;" class="text-white"> 
 <script>
-    function fromLower(){
-        let royal_city = 1.58;
+    function fromLower() {
+        const royal_city = 1.58;
+        const island = 1.40;
 
-        let fromLower_tier_2 = document.getElementById("fromLower_tier_2").value;
-        let fromLower_tier_3 = document.getElementById("fromLower_tier_3");
-        let fromLower_tier_4 = document.getElementById("fromLower_tier_4");
-        let fromLower_tier_5 = document.getElementById("fromLower_tier_5");
-        let fromLower_tier_6 = document.getElementById("fromLower_tier_6");
-        let fromLower_tier_7 = document.getElementById("fromLower_tier_7");
-        let fromLower_tier_8 = document.getElementById("fromLower_tier_8");
+        const fromLower_t2 = parseFloat(document.getElementById("fromLower_tier_2").value);
+        if (isNaN(fromLower_t2)) return;
 
-        let fromLower_refined_3 = document.getElementById("fromLower_refined_3");
-        let fromLower_refined_4 = document.getElementById("fromLower_refined_4");
-        let fromLower_refined_5 = document.getElementById("fromLower_refined_5");
-        let fromLower_refined_6 = document.getElementById("fromLower_refined_6");
-        let fromLower_refined_7 = document.getElementById("fromLower_refined_7");
-        let fromLower_refined_8 = document.getElementById("fromLower_refined_8");
+        const fromLowerTiers = [];
+        const fromLowerRefined = [];
 
-        let temp;
+        const fromLowerTiers_2 = [];
+        const fromLowerRefined_2 = [];
 
-        temp = fromLower_tier_2 * royal_city * 2;
-        fromLower_tier_3.innerHTML = temp.toFixed(2);
-        temp /= 2;
-        fromLower_refined_3.innerHTML = (temp * royal_city).toFixed(2);
+        const fromLowerTiers_3 = [];
+        const fromLowerRefined_3 = [];
 
-        temp = temp * royal_city * 2;
-        fromLower_tier_4.innerHTML = temp.toFixed(2);
-        temp /= 2;
-        fromLower_refined_4.innerHTML = (temp * royal_city).toFixed(2);
+        for (let i = 3; i <= 8; i++) {
+            fromLowerTiers[i] = document.getElementById(`fromLower_tier_${i}`);
+            fromLowerRefined[i] = document.getElementById(`fromLower_refined_${i}`);
+        }
 
-        temp = temp * royal_city * 3;
-        fromLower_tier_5.innerHTML = temp.toFixed(2);
-        temp /= 3;
-        fromLower_refined_5.innerHTML = (temp * royal_city).toFixed(2);
+        for (let i = 3; i <= 8; i++) {
+            fromLowerTiers_2[i] = document.getElementById(`2fromLower_tier_${i}`);
+            fromLowerRefined_2[i] = document.getElementById(`2fromLower_refined_${i}`);
+        }
 
-        temp = temp * royal_city * 4;
-        fromLower_tier_6.innerHTML = temp.toFixed(2);
-        temp /= 4;
-        fromLower_refined_6.innerHTML = (temp * royal_city).toFixed(2);
+        for (let i = 3; i <= 8; i++) {
+            fromLowerTiers_3[i] = document.getElementById(`3fromLower_tier_${i}`);
+            fromLowerRefined_3[i] = document.getElementById(`3fromLower_refined_${i}`);
+        }
 
-        temp = temp * royal_city * 5;
-        fromLower_tier_7.innerHTML = temp.toFixed(2);
-        temp /= 5;
-        fromLower_refined_7.innerHTML = (temp * royal_city).toFixed(2);
+        let temp = fromLower_t2;
 
-        temp = temp * royal_city * 5;
-        fromLower_tier_8.innerHTML = temp.toFixed(2);
-        temp /= 5;
-        fromLower_refined_8.innerHTML = (temp * royal_city).toFixed(2);
+        for (let i = 3; i <= 8; i++) {
+            const multiplier = i - 1;
+
+            temp = temp * royal_city * multiplier;
+            fromLowerTiers[i].innerHTML = temp.toFixed(2);
+
+            const refined = (temp / multiplier) * royal_city;
+            fromLowerRefined[i].innerHTML = refined.toFixed(2);
+
+            temp = temp / multiplier;
+        }
+
+        temp = fromLower_t2;
+
+        for (let i = 3; i <= 8; i++) {
+            const multiplier = i - 1;
+
+            temp = temp * island * multiplier;
+            fromLowerTiers_2[i].innerHTML = temp.toFixed(2);
+
+            const refined = (temp / multiplier) * royal_city;
+            fromLowerRefined_2[i].innerHTML = refined.toFixed(2);
+
+            temp = temp / multiplier;
+        }
+
+        temp = fromLower_t2;
+
+        for (let i = 3; i <= 8; i++) {
+            const multiplier = i - 1;
+
+            temp = temp * multiplier;
+            fromLowerTiers_3[i].innerHTML = temp.toFixed(2);
+
+            const refined = (temp / multiplier) * royal_city;
+            fromLowerRefined_3[i].innerHTML = refined.toFixed(2);
+
+            temp = temp / multiplier;
+        }
     }
+
     function toLower(){
         let royal_city = 1.58;
 
@@ -83,7 +107,6 @@
 
         temp /= royal_city * 2;
         toLower_tier_2.innerHTML = (temp).toFixed(2);
-        //         1337.12           wtf
     }
 </script>
 
@@ -94,7 +117,7 @@
                     <input id="fromLower_tier_2" type="text" class="form-control" oninput="fromLower()">
         </div>
         <!-- Lewa sekcja -->
-        <div class="col-md-6 mb-4">
+        <div class="col-md-4 mb-4">
             <section class="p-3 border rounded shadow-sm bg-dark text-white">
                 <h5>W mieście królewskim</h5>
                 
@@ -118,11 +141,53 @@
             </section>
         </div>
 
+        <!-- Srodkowa sekcja -->
+        <div class="col-md-4 mb-4">
+            <section class="p-3 border rounded shadow-sm bg-dark text-white">
+                <h5>Na wyspie z bonusem</h5>
+                
+                <div class="mb-2">T3: <span id="2fromLower_tier_3">0</span></div>
+                <div class="mb-2">Przerobione T3: <span id="2fromLower_refined_3">0</span></div><br>
+
+                <div class="mb-2">T4: <span id="2fromLower_tier_4">0</span></div>
+                <div class="mb-2">Przerobione T4: <span id="2fromLower_refined_4">0</span></div><br>
+
+                <div class="mb-2">T5: <span id="2fromLower_tier_5">0</span></div>
+                <div class="mb-2">Przerobione T5: <span id="2fromLower_refined_5">0</span></div><br>
+
+                <div class="mb-2">T6: <span id="2fromLower_tier_6">0</span></div>
+                <div class="mb-2">Przerobione T6: <span id="2fromLower_refined_6">0</span></div><br>
+
+                <div class="mb-2">T7: <span id="2fromLower_tier_7">0</span></div>
+                <div class="mb-2">Przerobione T7: <span id="2fromLower_refined_7">0</span></div><br>
+
+                <div class="mb-2">T8: <span id="2fromLower_tier_8">0</span></div>
+                <div class="mb-2">Przerobione T8: <span id="2fromLower_refined_8">0</span></div><br>
+            </section>
+        </div>
+
         <!-- Prawa sekcja -->
-        <div class="col-md-6 mb-4">
+        <div class="col-md-4 mb-4">
             <section class="p-3 border rounded shadow-sm bg-dark text-white">
                 <h5>Bez bonusu miasta królewskiego</h5>
                 
+                <div class="mb-2">T3: <span id="3fromLower_tier_3">0</span></div>
+                <div class="mb-2">Przerobione T3: <span id="3fromLower_refined_3">0</span></div><br>
+
+                <div class="mb-2">T4: <span id="3fromLower_tier_4">0</span></div>
+                <div class="mb-2">Przerobione T4: <span id="3fromLower_refined_4">0</span></div><br>
+
+                <div class="mb-2">T5: <span id="3fromLower_tier_5">0</span></div>
+                <div class="mb-2">Przerobione T5: <span id="3fromLower_refined_5">0</span></div><br>
+
+                <div class="mb-2">T6: <span id="3fromLower_tier_6">0</span></div>
+                <div class="mb-2">Przerobione T6: <span id="3fromLower_refined_6">0</span></div><br>
+
+                <div class="mb-2">T7: <span id="3fromLower_tier_7">0</span></div>
+                <div class="mb-2">Przerobione T7: <span id="3fromLower_refined_7">0</span></div><br>
+
+                <div class="mb-2">T8: <span id="3fromLower_tier_8">0</span></div>
+                <div class="mb-2">Przerobione T8: <span id="3fromLower_refined_8">0</span></div><br>
             </section>
         </div>
     </div>
@@ -135,7 +200,7 @@
             <input id="toLower_tier_5" type="text" class="form-control" oninput="toLower()">
         </div>
         <!-- Lewa sekcja -->
-        <div class="col-md-6 mb-4">
+        <div class="col-md-4 mb-4">
             <section class="p-3 border rounded shadow-sm bg-dark text-white">
                 <h5>W mieście królewskim</h5>
                 
@@ -150,8 +215,16 @@
             </section>
         </div>
 
+        <!-- Środkowa sekcja -->
+        <div class="col-md-4 mb-4">
+            <section class="p-3 border rounded shadow-sm bg-dark text-white">
+                <h5>Na wyspie z bonusem</h5>
+                
+            </section>
+        </div>
+
         <!-- Prawa sekcja -->
-        <div class="col-md-6 mb-4">
+        <div class="col-md-4 mb-4">
             <section class="p-3 border rounded shadow-sm bg-dark text-white">
                 <h5>Bez bonusu miasta królewskiego</h5>
                 
